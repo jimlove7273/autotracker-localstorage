@@ -1,25 +1,32 @@
+// -----------------------------------------------------------------------------
+// File: App.js
+//
+// Description: This is the heart of the application where it wraps the components
+//              with AutoProvider from AutoContext.js, which provides various data
+//              for the components
+// -----------------------------------------------------------------------------
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import { AutoProvider } from './contexts/AutoContext'
+
+// -- Import Components
+import { Formentry } from './components/Formentry'
+import { Table } from './components/Table'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AutoProvider>
+      <div className="container">
+        <h1>Auto-Tracker</h1>
+        <div className="grid-1 grid-md-1-3">
+          <Formentry />
+        </div>
+        <div className="grid-1 grid-md-2-3">
+          <Table />
+        </div>
+      </div>
+    </AutoProvider>
   );
 }
 
